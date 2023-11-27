@@ -25,6 +25,7 @@ int main()
 
   while (t--)
   {
+    // pegar os inputs
     ll a;
     cin >> a;
     ll b;

@@ -24,6 +24,8 @@ int main() {
   int t; cin >> t;
 
   while (t--) {
+
+    // pegar os inputs
     ll n; cin >> n;
     ll x ; cin >> x;
 
@@ -34,9 +36,11 @@ int main() {
       cin >> a[i];
     }
 
+    // adiciona todos os pontos ao array
     a.pb(x); a.pb(0);
     sort(a.begin(), a.end());
 
+    // verifica a maior distância entre 2 pontos no array
     ll maiorD = 0;
     for (ll i = 0; i <= n ; i ++) {
       if ((a[i + 1] - a[i]) > maiorD) {
