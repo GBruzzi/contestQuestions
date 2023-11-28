@@ -25,6 +25,8 @@ int main()
 
   while (t--)
   {
+
+    // receber o input como matriz
     vector<vector<char>> matriz(10, vector<char>(10));
     for (int i = 0; i < 10; i++)
     {
@@ -34,6 +36,8 @@ int main()
       }
     }
     ll points = 0;
+
+    // percorrer a matriz e avaliar quantos pontos o usuário fez em cada jogada
     for (int i = 0; i < 10; i++)
     {
       for (int j = 0; j < 10; j++)
