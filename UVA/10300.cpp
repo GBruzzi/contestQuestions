@@ -8,10 +8,12 @@ int main()
 {
   int t;
   cin >> t;
-  int res = 0;
+  
 
   while (t--)
   {
+
+    int res = 0;
 
     int f;
     cin >> f;
@@ -27,9 +29,11 @@ int main()
 
       res += size * index  ;
     }
+
+    cout << res << endl;
   }
 
-  cout << res << endl;
+  
 
   return 0;
 }
