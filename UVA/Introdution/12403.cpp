@@ -1,4 +1,4 @@
-// https://vjudge.net/problem/UVA-10550
+// https://vjudge.net/problem/UVA-12403
 
 #include <bits/stdc++.h>
 #define f first
@@ -21,9 +21,16 @@ const int LOG = 20;
 
 int main() {
   int t; cin >> t;
-
+  ll sum = 0;
   while (t--) {
-    
+    string s; cin >> s;
+
+    if (s == "report") {
+      cout << sum << endl;
+    } else {
+      int value; cin  >> value;
+      sum += value;   
+    }
   }
 
   return 0;
