@@ -1,3 +1,5 @@
+// https://codeforces.com/contest/1915
+
 #include <bits/stdc++.h>
 #define f first
 #define s second
@@ -39,17 +41,32 @@ int main()
       contTot++;
       cont++;
       cout << s[i];
-      
-      if (s[i] == 'a' || s[i] == 'e' && s[2 + i] == 'a' || s[2 + i] == 'e') {
-        cont = 0;
-        cout << ".";
+
+      if ((s[i] == 'a' || s[i] == 'e') && (s[2 + i] == 'a' || s[2 + i] == 'e')) 
+      {
+        if (s.size() - contTot > 1)
+        {
+          if (1 + i != s.size())
+          {
+            cont = 0;
+            cout << ".";
+          }
+        }
       }
 
-     if (cont == 3) {
-      cont = 0;
-      cout << ".";
-     }
+
+
+      if (cont == 3)
+      {
+        if (1 + i != s.size())
+        {
+          cont = 0;
+          cout << ".";
+        }
+      }
     }
+
+    cout << endl;
   }
 
   return 0;
