@@ -18,6 +18,9 @@ const int LOG = 20;
 
 int main()
 {
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+
   int t;
   cin >> t;
 
@@ -29,28 +32,23 @@ int main()
     cin >> s;
 
     int cont = 0;
-    int numTot = 0;
+    int contTot = 0;
 
     for (ll i = 0; i < s.length(); i++)
     {
-      numTot ++;
+      contTot++;
       cont++;
       cout << s[i];
-
-      if (cont == 2 && (s.size() - numTot > 2))
-      {
-        if (s[i] == 'a' || s[i] == 'e' && s[2 + i] == 'a' || s[2 + i] == 'e')
-        {
-          cout << '.';
-          cont = 0;
-        }
-      }
-
-      if (cont == 3 && (s.size() > numTot))
-      {
-        cout << '.';
+      
+      if (s[i] == 'a' || s[i] == 'e' && s[2 + i] == 'a' || s[2 + i] == 'e') {
         cont = 0;
+        cout << ".";
       }
+
+     if (cont == 3) {
+      cont = 0;
+      cout << ".";
+     }
     }
   }
 
