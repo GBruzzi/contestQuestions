@@ -34,6 +34,7 @@ int main()
     vector<ll> a(n);
     read(a);
 
+
     // declara duas pilhas
     vector<ll> s;
     vector<ll> secondSub;
@@ -49,13 +50,20 @@ int main()
         continue;
       }
 
-
-      // adicina o segundo numero do vector na segunda pilha
-      if (secondSub.size() == 0 && i > 0)
+      if (secondSub.size() == 0)
       {
-        secondSub.pb(a[i]);
-        continue;
+        if (a[i] <= s[s.size() - 1])
+        {
+          s.pb(a[i]);
+          continue;
+        }
+        else
+        {
+          secondSub.pb(a[i]);
+          continue;
+        }
       }
+
 
       // compara as diferenças para ir adicionando os números subsequentes em cada pilha
       ll diffFirst = a[i] - s[s.size() - 1];
@@ -66,7 +74,7 @@ int main()
         s.pb(a[i]);
       }
 
-      if (diffFirst > diffSecond && i > 1)
+      if (diffFirst > diffSecond && secondSub.size() > 0)
       {
         secondSub.pb(a[i]);
       }
@@ -80,7 +88,7 @@ int main()
       {
         pen++;
       }
-    } 
+    }
 
     if (secondSub.size() > 1)
     {
