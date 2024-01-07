@@ -34,7 +34,6 @@ int main()
     vector<ll> a(n);
     read(a);
 
-
     // declara duas pilhas
     vector<ll> s;
     vector<ll> secondSub;
@@ -50,31 +49,11 @@ int main()
         continue;
       }
 
-      if (secondSub.size() == 0)
-      {
-        if (a[i] <= s[s.size() - 1])
-        {
-          s.pb(a[i]);
-          continue;
-        }
-        else
-        {
-          secondSub.pb(a[i]);
-          continue;
-        }
-      }
-
-
-      // compara as diferenças para ir adicionando os números subsequentes em cada pilha
-      ll diffFirst = a[i] - s[s.size() - 1];
-      ll diffSecond = a[i] - secondSub[secondSub.size() - 1];
-
-      if (diffFirst <= diffSecond && i > 0)
+      if (a[i] <= s[s.size() - 1])
       {
         s.pb(a[i]);
       }
-
-      if (diffFirst > diffSecond && secondSub.size() > 0)
+      else
       {
         secondSub.pb(a[i]);
       }
@@ -100,6 +79,20 @@ int main()
         }
       }
     }
+
+    // for (int n : s)
+    // {
+    //   cout << n << " ";
+    // }
+
+    // cout << endl;
+
+    // for (int n : secondSub)
+    // {
+    //   cout << n << " ";
+    // }
+
+    // cout << endl;
 
     cout << pen << endl;
   }
