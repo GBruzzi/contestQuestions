@@ -1,4 +1,4 @@
-
+// https://codeforces.com/contest/978/problem/A
 
 #include <bits/stdc++.h>
 #define f first
@@ -25,40 +25,32 @@ int main()
 {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  ll t;
-  cin >> t;
+  
+  int n; cin >> n;
+  vector<int> v(n);
+  read(v);
 
-  while (t--)
-  {
-    ll n, k, x;
-    cin >> n >> k >> x;
-    vector<ll> v(n);
-    read(v);
+  vector<int> resp;
+  
 
-    sort(v.begin(), v.end());
-
-    ll sum = 0;
-    for (int i = 0; i <= k; i++)
-    {
-      v.pop_back();
-      if (v.size() != 0)
-      {
-        v[v.size() - 1] *= -1;
-      }
+  for (int i = n - 1; i >= 0; i--) {
+    bool isPresent = false;
+    for (int c : resp) {
+        if (v[i] == c) {
+            isPresent = true;
+            break;  
+        }
     }
-
-    if (v.size() != 0)
-    {
-      for (int c : v)
-      {
-        sum += c;
-      }
-
-      cout << sum << endl;
-      continue;
+    if (!isPresent) {
+        resp.pb(v[i]);  
     }
+}
+ 
 
-    cout << 0 << endl;
+  cout << resp.size() << endl;
+
+  for (int i = resp.size() - 1; i >= 0; i--) {
+    cout << resp[i] << " ";
   }
 
   return 0;
