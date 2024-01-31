@@ -30,13 +30,34 @@ int main()
 
   while (t--)
   {
-    ll x,n;
+    ll x, n;
     cin >> x >> n;
 
-    int answer = x / n;
+    if (x % n == 0)
+    {
+      cout << x / n << endl;
+      continue;
+    }
 
-    cout << answer << endl;
-
+    ll resp = 1;
+    for (int i = 1; i * i <= x; i++)
+    {
+      if (x % i == 0)
+      {
+        ll aux = x / i;
+        ll temp = x - i * (n - 1);
+        ll temp2 = x - aux * (n - 1);
+        if (temp >= i and __gcd(temp, (ll)i) == i)
+        {
+          resp = max(resp, (ll)i);
+        }
+        if (temp2 >= aux and __gcd(temp2, aux) == aux)
+        {
+          resp = max(resp, aux);
+        }
+      }
+    }
+    cout << resp << endl;
   }
 
   return 0;
