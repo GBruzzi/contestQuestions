@@ -10,14 +10,6 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll, ll> pii;
 
-const int INF = 0x3f3f3f3f;
-const ll LINF = 0x3f3f3f3f3f3f3f3fll;
-const ll MOD = 998244353;
-const ll MODhash = 41083620229;
-const ll NO_OPERTATION = -1;
-const double eps = 1e-8;
-const int MAX = 3000000;
-const int LOG = 20;
 
 int main()
 {
@@ -40,37 +32,43 @@ int main()
       }
     }
 
-    string answer = "UNKNOWN"; // Inicializa com "UNKNOWN" e atualiza conforme necessário
+    bool finish = false;
 
-    for (int i = 0; i < n - 1; i++) // Ajuste no limite para evitar índices fora do vetor
+    for (int i = 0; i < n; i++)
     {
-      for (int j = 0; j < n - 1; j++) // Ajuste no limite para evitar índices fora do vetor
+      if (finish)
+      {
+        break;
+      }
+      for (int j = 0; j < n; j++)
       {
         if (grid[i][j] == '1')
         {
-          if (grid[i + 1][j] == '0' || grid[i + 1][j - 1] == '0') // Correção na condição
-          {
-            answer = "TRIANGLE";
-            break;
-          }
 
           if (grid[i + 1][j - 1] == '1')
           {
-            answer = "TRIANGLE";
+            cout << "TRIANGLE" << endl;
+            finish = true;
             break;
           }
 
-          answer = "SQUARE";
-          break;
+          if (grid[i + 1][j] == '0')
+          {
+            cout << "TRIANGLE" << endl;
+            finish = true;
+            break;
+          }
+          else
+          {
+            cout << "SQUARE" << endl;
+            finish = true;
+            break;
+          }
         }
       }
-
-      if (answer != "UNKNOWN") // Se a resposta foi determinada, encerra o loop externo
-        break;
     }
 
-    cout << answer << endl; // Imprime a resposta no final de cada caso de teste
+    
   }
-
   return 0;
 }
