@@ -15,15 +15,24 @@ int main()
     cin >> v[i];
   }
 
-  vector<long long> marked;
+
+  // criar vector de balões já estourados
+  vector<bool> marked;
+  
+  for (long long i = 0; i < v.size(); i ++) {
+    marked.push_back(false);
+  }
+
   long long ans = 0;
 
   for (long long i = 0; i < n; i++)
   {
+
+    // verificar se determinado balão ja foi estourado
     bool present = false;
     for (long long o = 0; o < marked.size(); o++)
     {
-      if (v[i] == marked[o])
+      if (marked[i] == true)
       {
         present = true;
         break;
@@ -35,8 +44,10 @@ int main()
       continue;
     }
 
+
+    //estourar um balão e dar sequência
     ans++;
-    marked.push_back(v[i]);
+    marked[i] = true;
     v[i]--;
     for (long long j = i + 1; j < v.size(); j++)
     {
@@ -48,7 +59,7 @@ int main()
 
       if (v[i] == v[j])
       {
-        marked.push_back(v[j]);
+        marked[j] = true;
         v[i]--;
       }
     }
