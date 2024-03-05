@@ -54,13 +54,6 @@ int main()
     }
   }
 
-  // for (long long i = 0; i < v.size() - 1; i ++) {
-  //   for (long long j = 1 + i; j < v.size(); j ++) {
-  //     if (v[i] == v[j]) {
-  //       ans++;
-  //     }
-  //   }
-  // }
 
   cout << ans;
 
