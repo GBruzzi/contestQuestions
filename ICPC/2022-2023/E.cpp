@@ -52,11 +52,13 @@ int main()
     for (long long j = i + 1; j < v.size(); j++)
     {
 
+      // se a altura for zero, parar
       if (v[i] == 0)
       {
         break;
       }
 
+      // se a altura for igual, estourar outro balão e marca - lo e diminuir a altura
       if (v[i] == v[j])
       {
         marked[j] = true;
