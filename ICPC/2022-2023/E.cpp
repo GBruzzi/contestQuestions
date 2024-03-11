@@ -15,27 +15,26 @@ int main()
     cin >> v[i];
   }
 
-
-  // criar vector de balões já estourados
-  vector<bool> marked;
-  
-  for (long long i = 0; i < v.size(); i ++) {
-    marked.push_back(false);
-  }
+  // criar vector de tracking de arrows
+  vector<int> arrows;
 
   long long ans = 0;
 
   for (long long i = 0; i < n; i++)
   {
-
-    // verificar se determinado balão ja foi estourado
+    // fazendo o tracking das arrows
     bool present = false;
-    for (long long o = 0; o < marked.size(); o++)
+    for (long long j = 0; j < arrows.size(); j++)
     {
-      if (marked[i] == true)
+      if (arrows[j] == 0) {
+        continue;
+      }
+      int actualArrow = arrows[j] - 1;
+      if (v[i] == actualArrow)
       {
+        arrows[j]--;
+        arrows.push_back(v[i]);
         present = true;
-        break;
       }
     }
 
@@ -44,29 +43,9 @@ int main()
       continue;
     }
 
-
-    //estourar um balão e dar sequência
     ans++;
-    marked[i] = true;
-    v[i]--;
-    for (long long j = i + 1; j < v.size(); j++)
-    {
-
-      // se a altura for zero, parar
-      if (v[i] == 0)
-      {
-        break;
-      }
-
-      // se a altura for igual, estourar outro balão e marca - lo e diminuir a altura
-      if (v[i] == v[j])
-      {
-        marked[j] = true;
-        v[i]--;
-      }
-    }
+    arrows.push_back(v[i]);
   }
-
 
   cout << ans;
 
