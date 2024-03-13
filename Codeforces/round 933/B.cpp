@@ -26,11 +26,33 @@ int main()
     vector<ll> v(n);
     read(v);
 
+    bool can = true;
 
-    for (int i = 1; i < v.size() - 1; i++)
+    for (int i = 0; i < v.size() - 2; i++)
     {
-     
+      if (v[i] < 0)
+      {
+        can = false;
+        break;
+      }
+
+      int operations = v[i];
+      v[i + 1] -= operations * 2;
+      v[i + 2] -= operations;
+      v[i] = 0;
     }
+
+    if (v[v.size() - 2] != 0 || v[v.size() - 1] != 0) {
+      can = false;
+    }
+
+    if (can)
+    {
+      cout << "yes" << endl;
+      continue;
+    }
+
+    cout << "no" << endl;
   }
 
   return 0;
