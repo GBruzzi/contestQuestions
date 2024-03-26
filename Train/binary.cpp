@@ -8,7 +8,7 @@ int main() {
   int n; cin >> n;
   string ans;
 
-  while (n >= 2) {
+  while (n > 0 ) {
     int rest = n % 2;
     n /= 2;
     ans += to_string(rest);
